@@ -1,6 +1,7 @@
 package com.project.servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.project.randomgraphics.RandomCubeProvider;
 import com.project.randomgraphics.RandomShapeProviderInterface;
@@ -39,6 +40,8 @@ public class RandomGraphicsServlet extends HttpServlet {
 			RandomShapeProviderInterface provider = new RandomCubeProvider(200,200,10);
 			graphics = provider.getGraphic();
 		}
+		
+		System.out.println(Arrays.deepToString(graphics));
 		
 		//add argument to the body
 		req.setAttribute("graphics", graphics);

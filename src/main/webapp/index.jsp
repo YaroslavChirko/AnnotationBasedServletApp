@@ -3,6 +3,6 @@
 <body>
 <h2>Hello World!</h2>
 <br><br><br>
-<a href="/random"></a>
+<a href="random">random</a>
 </body>
 </html>

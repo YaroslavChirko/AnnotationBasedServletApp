@@ -44,6 +44,11 @@ public class Colour {
 	public synchronized void setA(int a) {
 		this.a = a;
 	}
+
+	@Override
+	public String toString() {
+		return "Colour [r=" + r + ", g=" + g + ", b=" + b + ", a=" + a + "]";
+	}
 	
 	
 }
