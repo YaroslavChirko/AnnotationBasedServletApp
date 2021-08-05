@@ -22,4 +22,10 @@ public class Square implements Shape{
 		return this.position;
 	}
 
+	@Override
+	public String toString() {
+		return "Square [type=" + type + ", position=" + position + "]";
+	}
+	
+	
 }

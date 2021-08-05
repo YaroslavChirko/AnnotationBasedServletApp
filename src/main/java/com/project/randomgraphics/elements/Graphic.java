@@ -24,6 +24,11 @@ public class Graphic {
 	public synchronized void setGraphicColour(Colour graphicColour) {
 		this.graphicColour = graphicColour;
 	}
+
+	@Override
+	public String toString() {
+		return "Graphic [graphicShape=" + graphicShape + ", graphicColour=" + graphicColour + "]";
+	}
 	
 	
 	
