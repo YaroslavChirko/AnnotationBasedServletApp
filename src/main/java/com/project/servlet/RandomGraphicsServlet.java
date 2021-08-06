@@ -3,24 +3,31 @@ package com.project.servlet;
 import java.io.IOException;
 import java.util.Arrays;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.project.randomgraphics.RandomCubeProvider;
 import com.project.randomgraphics.RandomShapeProviderInterface;
 import com.project.randomgraphics.elements.Graphic;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/random")
 public class RandomGraphicsServlet extends HttpServlet {
 	private static final long serialVersionUID = 238731237398195710L;
+	//get width and height from headers later
+	private int screenWidth  = 500;
+	private int screenHeight = 500;
+	private int numberOfCubes = 3;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//get shape generator
-		RandomShapeProviderInterface provider = new RandomCubeProvider(200,200,10);
+		//should make bean of generator and autowire it or smth
+		RandomShapeProviderInterface provider = new RandomCubeProvider(screenWidth, screenHeight, numberOfCubes);
 		//call function to generate the shapes
 		Graphic [] graphics = provider.getGraphic();
 		
@@ -37,16 +44,18 @@ public class RandomGraphicsServlet extends HttpServlet {
 		 graphics = (Graphic[]) req.getAttribute("graphics");
 		if(graphics == null) {
 			//if arg is not present call the function
-			RandomShapeProviderInterface provider = new RandomCubeProvider(200,200,10);
+			RandomShapeProviderInterface provider = new RandomCubeProvider(screenWidth, screenHeight, numberOfCubes);
 			graphics = provider.getGraphic();
 		}
 		
-		System.out.println(Arrays.deepToString(graphics));
+		//System.out.println(Arrays.deepToString(graphics));
 		
 		//add argument to the body
 		req.setAttribute("graphics", graphics);
 		//return jsp page
-		req.getRequestDispatcher("random-graphics.jsp").include(req,resp);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("random-graphics.jsp");
+		//dispatcher.include(req,resp);
+		dispatcher.forward(req, resp);
 	}
 
 }

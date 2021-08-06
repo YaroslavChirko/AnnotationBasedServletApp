@@ -19,21 +19,22 @@ public class RandomCubeProvider extends RandomShapeProviderInterface{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
 		graphics = new Graphic[numberOfCubes];
+		initialize();
 	}
 	
-	{
+	private void initialize(){
 		int numberOfCubes = 0;
 		Random random = new Random();
-		while(graphics.length-1>numberOfCubes) {
-		int x = random.nextInt(screenWidth);
-		int y = random.nextInt(screenHeight);
+		while(graphics.length>numberOfCubes) {
+		int x = random.nextInt(screenWidth-10);
+		int y = random.nextInt(screenHeight-10);
 		
 		int width = random.nextInt(screenWidth-x-10)+screenWidth;
 		int height = random.nextInt(screenHeight-y-10)+screenHeight;
 		
 		
 			if(Math.min(width,height)>0) {
-				colour = new Colour(random.nextInt(255),random.nextInt(255),random.nextInt(255));
+				colour = new Colour(random.nextInt(255),random.nextInt(255),random.nextInt(255),random.nextFloat());
 				
 				graphics[numberOfCubes] = new Graphic(new Square(x,y,Math.min(width,height),
 						Math.min(width,height)),
