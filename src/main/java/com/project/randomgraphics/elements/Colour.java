@@ -4,7 +4,7 @@ public class Colour {
 	private int r;
 	private int g;
 	private int b;
-	private int a;
+	private float a;
 	
 	public Colour() {}
 	
@@ -14,7 +14,7 @@ public class Colour {
 		this.b = b;
 	}
 	
-	public Colour(int r, int g, int b,int a) {
+	public Colour(int r, int g, int b,float a) {
 		this(r, g, b);
 		this.a = a;
 	}
@@ -38,10 +38,10 @@ public class Colour {
 	public synchronized void setB(int b) {
 		this.b = b;
 	}
-	public synchronized int getA() {
+	public synchronized float getA() {
 		return a;
 	}
-	public synchronized void setA(int a) {
+	public synchronized void setA(float a) {
 		this.a = a;
 	}
 

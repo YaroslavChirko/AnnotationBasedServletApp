@@ -40,6 +40,12 @@ public class Position {
 	public synchronized void setHeight(int height) {
 		this.height = height;
 	}
+
+	@Override
+	public String toString() {
+		return "Position [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + "]";
+	}
+	
 	
 	
 }
