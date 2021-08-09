@@ -4,6 +4,7 @@
 <%@page import="com.project.randomgraphics.elements.Position" %>
 <%@page import="com.project.randomgraphics.elements.Colour" %>
 <%@page import="com.project.randomgraphics.elements.Shape" %>
+<%@page import="com.project.randomgraphics.elements.ShapeType" %>
 <%@page import="java.util.Arrays" %>
 
 <!DOCTYPE html>
@@ -32,8 +33,11 @@ if(graphics !=null && graphics.length !=0){
 	 +"margin-top:"+current_position.getY()+"px;"
 	 +"margin-left:"+current_position.getX()+"px;"
 	 +"height:"+current_position.getHeight()+"px;"
-	 +"width:"+current_position.getWidth()+"px;"
-	 +"}</style>");
+	 +"width:"+current_position.getWidth()+"px;");
+	 if(graphics[i].getGraphicShape().getType() == ShapeType.ELLIPSOID){
+		 out.print("border-radius: 50%;");
+	 }
+	 out.print("}</style>");
  }
 }else{
 	out.print("Found No Graphics");
