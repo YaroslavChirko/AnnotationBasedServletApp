@@ -3,7 +3,6 @@ package com.project.randomgraphics.elements;
 //class is immutable
 public class Square implements Shape{
 
-	private ShapeType type = ShapeType.SQUARE;
 	private Position position;
 	
 	public Square(Position position) {
@@ -15,7 +14,7 @@ public class Square implements Shape{
 	}
 	
 	public ShapeType getType() {
-		return this.type;
+		return ShapeType.SQUARE;
 	}
 
 	public Position getPosition() {
@@ -24,7 +23,7 @@ public class Square implements Shape{
 
 	@Override
 	public String toString() {
-		return "Square [type=" + type + ", position=" + position + "]";
+		return "Square [type=" + getType() + ", position=" + position + "]";
 	}
 	
 	
